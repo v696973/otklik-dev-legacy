@@ -1,0 +1,57 @@
+{
+    "main": {
+        "log_level": "DEBUG",
+        "username": "otklik-node",
+        "serve_gui": false
+    },
+    "port_scanner": {
+	"enabled": true,
+        "log_level": "INFO",
+	"max_rate": 1000,
+	"num_ips_per_randomscan": 64,
+	"blacklisted_subnets": [
+            "10.0.0.0/8",
+            "100.64.0.0/10",
+            "127.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16"
+	]
+    },
+    "scandb": {
+        "log_level": "DEBUG",
+        "genesis_nodes": [
+            {
+                "data": {
+                    "author": "BlackNode",
+                    "data_addr": "Genesis node 1.",
+                    "prev_nodes": [],
+                    "timestamp": 1514977678.3409474
+                },
+                "nonce": 2925577,
+                "pubkey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjUJ/pl+WZCcvnx3mov8t/n4VW7YhUaiwg8z+EkkXkzowJtlg7EvVh433Am0o8pn3N23Z5zO1+uLjc7/NdwMiH8Wp7hVx/C5zYO1kS0wdnZYpcBkfDqf0k3hpglKYo08OodpFsXHAaa7Ys6HHcQIgh0qOBZU0kv5hsC/oagkbTzz/hTNuqNsZVGMJtQuo1P445m7tLi0AQEG5jDXA6qgp/iv5+lhCBDvZ+jonz+ywxDRrWG2BXT6aTjyb9rkjWfdnn7XKUF/1V2cWwLKkYkNDi99+bwJ4pr4M4NrQ4UpehfrJYv/D0uXWt0guAGSn8TNsgJfepdiHJChf34fL7fzrXQIDAQAB",
+                "signature": "UP2iAjOw1dA+Lz5EoKOms0PnTKgCg4DGAuZquc/Gtygm4Q8NK+d7ptMdiM43NbUUBe3US1/f45Kvn6isKPX16MuHxgOatn3W9Qu/DNEqJRCma3mptLJ9Ofv2HbTyKuuPPQnD9H3isbyr7mKhv0zuHgufIes4njA92uH+MvGkSizFX0ubv8HVvC/7wGpR8QA+N1roprwMPo4Xb8GqY0Nc1K7zTsf010C2JmQ8kx4fm6+KHUk0dEhD/tJOrrnw+nzrUtXyaBjMzzrAx7mD/BdVgCfjpejagn9i7O1v/+PVo+zMaKE/D90J0vFmaibmzhSCzJGjifCFpRtg4iHFsUCcXQ=="
+            },
+            {
+                "data": {
+                    "author": "BlackNode",
+                    "data_addr": "Genesis node 2.",
+                    "prev_nodes": [],
+                    "timestamp": 1514977689.0779057
+                },
+                "nonce": 4823761,
+                "pubkey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjUJ/pl+WZCcvnx3mov8t/n4VW7YhUaiwg8z+EkkXkzowJtlg7EvVh433Am0o8pn3N23Z5zO1+uLjc7/NdwMiH8Wp7hVx/C5zYO1kS0wdnZYpcBkfDqf0k3hpglKYo08OodpFsXHAaa7Ys6HHcQIgh0qOBZU0kv5hsC/oagkbTzz/hTNuqNsZVGMJtQuo1P445m7tLi0AQEG5jDXA6qgp/iv5+lhCBDvZ+jonz+ywxDRrWG2BXT6aTjyb9rkjWfdnn7XKUF/1V2cWwLKkYkNDi99+bwJ4pr4M4NrQ4UpehfrJYv/D0uXWt0guAGSn8TNsgJfepdiHJChf34fL7fzrXQIDAQAB",
+                "signature": "W4wbEn6feZRuhP26i93e6Lcp0RjeshJcobZnx3vRHe77CKuLNLWH3U/HrqrICYUYhWxPcIorfQk/qD2JOSxMLqCtbsT+5Sy4R+1DHPITrP8GAeT/05/Gt+hAoX+5guOhxaGcmTQS6kPzY0B9fHpJIpRNW6hH2UUQdbx+aNQx4PC6Pm1LONhamiS9oF/FcPKwevypuha4wfkH/Cku2hiDOLEqpuqlBjE0DJVwoW919uT25vwt3XAlllleqatpMCmyPeB7/mRhoC1ir5sjtUEXl4oxnJ/dq+E8h4lB0Sz8j8Rjxhq+4FaE7ONi3H/kLJhsSuBLsKXsxpqYk6b6FIXeaQ=="
+            }
+        ]
+    },
+    "ipfs": {
+        "log_level": "INFO",
+	"filestore_path": "/data/filestore",
+        "forbid_ipv4": true,
+        "pubsub_topic": "otkliktest000111",
+        "bootstrap_peer_ttl": 900,
+        "bootstrap_peers": [
+	    "/ip6/fd87:d87e:eb43:8fb4:c11:6bdd:e37a:194d/tcp/4001/ipfs/QmTMxLJF7FgkduRDVTXmKjh3YWFUGXjUBrrmNSmNtX6k77"
+        ]
+    }
+}
