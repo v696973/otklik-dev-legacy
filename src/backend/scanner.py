@@ -34,7 +34,7 @@ class Masscan(object):
             'complete': False
         }
 
-    def scan(self, ips, ports='1-65535'):
+    def scan(self, ips, ports='1-@'):
         if type(ports) == list:
             ports = ','.join([str(p) for p in ports])
         elif type(ports) == str:
@@ -102,6 +102,7 @@ class PortScanner(object):
     def __init__(self):
         self.config = config
         self.geoip_reader = geolite2.reader()
+        self.ports = self.config['port_scanner']['ports']
         self.masscan = Masscan(
             masscan_max_rate=self.config['port_scanner']['max_rate']
         )
@@ -214,7 +215,7 @@ class PortScanner(object):
                 self.config['port_scanner']['num_ips_per_randomscan']
             )
         ]
-        scan_data = self.scan(ips)
+        scan_data = self.scan(ips, self.ports)
         logger.debug('Scan has been completed')
         return scan_data
 
