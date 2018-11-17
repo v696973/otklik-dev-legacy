@@ -170,6 +170,12 @@ class PortScanner(object):
             'complete': False
         }
 
+        ip_variations = {
+            r'\d+\.\d+\.\d+\.\d+',
+            r'\d+-\d+-\d+-\d+',
+            r'\d+dot\d+dot\d+dot\d+',
+        }
+
         result = {}
         for entry in out:
             ip = entry['ip']
@@ -184,10 +190,14 @@ class PortScanner(object):
                     'banner_info': [],
                 }
 
+            banner = entry['data']['banner']
+            for variation in ip_variations:
+                banner = re.sub(variation, '[CENSORED]', banner)
+
             if entry['rec_type'] == 'banner':
                 result[ip]['ports'][port]['banner_info'].append({
                     'service_name': entry['data']['service_name'],
-                    'banner': entry['data']['banner']
+                    'banner': banner
                 })
             self.analysis_status['n_processed'] += 1
             self.analysis_status['percents_completed'] = round(
