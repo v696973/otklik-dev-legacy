@@ -190,11 +190,11 @@ class PortScanner(object):
                     'banner_info': [],
                 }
 
-            banner = entry['data']['banner']
-            for variation in ip_variations:
-                banner = re.sub(variation, '[CENSORED]', banner)
-
             if entry['rec_type'] == 'banner':
+                banner = entry['data']['banner']
+                for variation in ip_variations:
+                    banner = re.sub(variation, '[CENSORED]', banner)
+
                 result[ip]['ports'][port]['banner_info'].append({
                     'service_name': entry['data']['service_name'],
                     'banner': banner
