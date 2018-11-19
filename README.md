@@ -16,15 +16,15 @@
 
 3. Stop application
 
-3. Edit `data/otklik_peers.json`
+3. Edit `data/config/otklik_config.json`
 
 4. Add new entry in list of peers with format:
 
-`"\/ip6\/{{ IPv6 }}\/tcp\/4001\/ipfs\/{{ Peer ID }}"`
+`"/ip6/{{ IPv6 }}/tcp/4001/ipfs/{{ Peer ID }}"`
 
 like
 
-`"\/ip6\/fd87:d87e:eb43:10c0:f0e0:1060:faf7:a836\/tcp\/4001\/ipfs\/Q1a78eHYSvEmTNs1cRN81hkd9tTk8DvJXF179Ae2a2DGwt"`
+`"/ip6/fd87:d87e:eb43:10c0:f0e0:1060:faf7:a836/tcp/4001/ipfs/Q1a78eHYSvEmTNs1cRN81hkd9tTk8DvJXF179Ae2a2DGwt"`
 
 5. Run application
 
