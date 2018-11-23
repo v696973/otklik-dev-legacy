@@ -34,7 +34,7 @@ class Masscan(object):
             'complete': False
         }
 
-    def scan(self, ips, ports='1-65535'):
+    def scan(self, ips, ports='1-@'):
         if type(ports) == list:
             ports = ','.join([str(p) for p in ports])
         elif type(ports) == str:
@@ -102,6 +102,7 @@ class PortScanner(object):
     def __init__(self):
         self.config = config
         self.geoip_reader = geolite2.reader()
+        self.ports = self.config['port_scanner']['ports']
         self.masscan = Masscan(
             masscan_max_rate=self.config['port_scanner']['max_rate']
         )
@@ -169,6 +170,12 @@ class PortScanner(object):
             'complete': False
         }
 
+        ip_variations = {
+            r'\d+\.\d+\.\d+\.\d+',
+            r'\d+-\d+-\d+-\d+',
+            r'\d+dot\d+dot\d+dot\d+',
+        }
+
         result = {}
         for entry in out:
             ip = entry['ip']
@@ -184,9 +191,13 @@ class PortScanner(object):
                 }
 
             if entry['rec_type'] == 'banner':
+                banner = entry['data']['banner']
+                for variation in ip_variations:
+                    banner = re.sub(variation, '[CENSORED]', banner)
+
                 result[ip]['ports'][port]['banner_info'].append({
                     'service_name': entry['data']['service_name'],
-                    'banner': entry['data']['banner']
+                    'banner': banner
                 })
             self.analysis_status['n_processed'] += 1
             self.analysis_status['percents_completed'] = round(
@@ -214,7 +225,7 @@ class PortScanner(object):
                 self.config['port_scanner']['num_ips_per_randomscan']
             )
         ]
-        scan_data = self.scan(ips)
+        scan_data = self.scan(ips, self.ports)
         logger.debug('Scan has been completed')
         return scan_data
 

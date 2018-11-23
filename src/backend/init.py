@@ -119,8 +119,8 @@ ipv6, _ = c.communicate()
 # ipv4 = ipv6.decode().split()[1]
 ipv6 = ipv6.decode().split()[0]
 
-# logger.info('IPv4 Addres is: {}'.format(ipv4))
-logger.info('Tor: IPv6 Addres is: {}'.format(ipv6))
+# logger.info('IPv4 Address is: {}'.format(ipv4))
+logger.info('Tor: IPv6 Address is: {}'.format(ipv6))
 
 if config['ipfs']['forbid_ipv4']:
     logger.info(

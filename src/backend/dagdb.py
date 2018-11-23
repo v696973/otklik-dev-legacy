@@ -251,7 +251,7 @@ class DAGDB(object):
                     node_addr,
                     node_data
                 )
-                self.logger.error('Node validated')
+                self.logger.debug('Node validated')
                 if is_valid_index_node:
                     self.on_saved_index_node(node_addr, node_data)
                     return (self.NODE_SAVED, node_addr, node_data)
